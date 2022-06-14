@@ -16,3 +16,9 @@ class CarroDAO(object):
             'MATCH (c:Carro {modelo:$modelo}) SET c.turbo = $turbo RETURN c',
             {'modelo': carro['modelo'], 'turbo': carro['turbo']}
         )
+
+    def delete(self, carro):
+        return self.db.execute_query(
+            'MATCH (c:Carro {modelo:$modelo}) DELETE c',
+            {'modelo': carro['modelo']}
+        )

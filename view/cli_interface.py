@@ -58,5 +58,23 @@ def view(connection):
 
             divider()
 
+        elif option == '4':
+            motorista = {
+                'nome': 'Samuel'
+            }
+            motoristaDAO.delete(motorista)
+
+            carro = {
+                'modelo': 'Corvette'
+            }
+            carroDAO.delete(carro)
+
+            aux = motoristaDAO.read_all()
+            pp(aux)
+            aux = carroDAO.read_all()
+            pp(aux)
+
+            divider()
+
         else:
             break

@@ -20,3 +20,9 @@ class MotoristaDAO(object):
             'MATCH (m:Motorista {nome:$nome}) SET m.calvo = $calvo RETURN m',
             {'nome': motorista['nome'], 'calvo': motorista['calvo']}
         )
+
+    def delete(self, motorista):
+        return self.db.execute_query(
+            'MATCH (m:Motorista {nome:$nome}) DELETE m',
+            {'nome': motorista['nome']}
+        )
