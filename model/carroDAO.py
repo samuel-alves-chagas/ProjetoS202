@@ -10,3 +10,9 @@ class CarroDAO(object):
 
     def read_all(self):
         return self.db.execute_query('MATCH (c:Carro) RETURN c')
+
+    def update_turbo(self, carro):
+        return self.db.execute_query(
+            'MATCH (c:Carro {modelo:$modelo}) SET c.turbo = $turbo RETURN c',
+            {'modelo': carro['modelo'], 'turbo': carro['turbo']}
+        )

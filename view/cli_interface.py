@@ -40,6 +40,22 @@ def view(connection):
             divider()
 
         elif option == '3':
+            motorista = {
+                'nome': 'Samuel',
+                'calvo': True
+            }
+
+            aux = motoristaDAO.update_baldness(motorista)
+            pp(aux)
+
+            carro = {
+                'modelo': 'Corvette',
+                'turbo': True
+            }
+
+            aux = carroDAO.update_turbo(carro)
+            pp(aux)
+
             divider()
 
         else:
