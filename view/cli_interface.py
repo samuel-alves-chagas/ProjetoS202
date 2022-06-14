@@ -1,4 +1,4 @@
-# from pprintpp import pprint as pp
+from pprintpp import pprint as pp
 from model.motoristaDAO import MotoristaDAO
 from model.carroDAO import CarroDAO
 from utils.utils import divider, optionStr
@@ -27,11 +27,16 @@ def view(connection):
                 'cavalos': 217,
                 'turbo': False
             }
-            # motoristaDAO.create(motorista)
+            motoristaDAO.create(motorista)
             carroDAO.create(carro)
+
             divider()
 
         elif option == '2':
+            aux = motoristaDAO.read_all()
+            pp(aux)
+            aux = carroDAO.read_all()
+            pp(aux)
             divider()
 
         elif option == '3':

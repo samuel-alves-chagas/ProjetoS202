@@ -7,3 +7,6 @@ class MotoristaDAO(object):
         return self.db.execute_query(
             'CREATE (m:Motorista {nome:$nome, cnh:$cnh, idade:$idade, calvo:$calvo, habilidade:$habilidade}) return m',
             {'nome': motorista['nome'], 'cnh': motorista['cnh'], 'idade': motorista['idade'], 'calvo': motorista['calvo'], 'habilidade': motorista['habilidade']})
+
+    def read_all(self):
+        return self.db.execute_query('MATCH (m:Motorista) RETURN m')
