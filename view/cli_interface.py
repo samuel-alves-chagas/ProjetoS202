@@ -52,16 +52,17 @@ def view(connection):
             divider()
 
         elif option == '3':
-            print('Você escolheu listar as relações entre os pilotos e os carros:')        
+            print('Você escolheu listar as relações entre os pilotos e os carros:')
             results = motoristaDAO.read_all_relationship()
-            if len(results) > 0:              
-                print('Estas são todas as relações entre os pilotos e os carros cadastrados até agora:')
+            if len(results) > 0:
+                print(
+                    'Estas são todas as relações entre os pilotos e os carros cadastrados até agora:')
                 for record in results:
-                    pp(record)
                     for carro in results[record]:
-                        pp(' ->  ' + carro['c']._properties['modelo'])
+                        pp(record + ' ->  ' + carro['c']._properties['modelo'])
             else:
-                print('Nenhuma relação entre pilotos e carros foi cadastrada até o momento')
+                print(
+                    'Nenhuma relação entre pilotos e carros foi cadastrada até o momento')
             divider()
 
         elif option == '4':
@@ -104,9 +105,10 @@ def view(connection):
             print('\nCarro cadastrado!')
 
             divider()
-        
+
         elif option == '6':
-            print('Você escolheu cadastrar uma nova relação entre um piloto e um carro, preencha os dados abaixo')
+            print(
+                'Você escolheu cadastrar uma nova relação entre um piloto e um carro, preencha os dados abaixo')
             nome = input('   O nome do piloto: ')
             modelo = input('   O modelo do carro: ')
 
@@ -114,7 +116,6 @@ def view(connection):
             print('\nRelação entre piloto e carro cadastrada!')
 
             divider()
-
 
         elif option == '7':
             print('Você escolheu tornar um dos motoristas cadastrados calvo')
@@ -195,7 +196,6 @@ def view(connection):
                     }
                     motoristaDAO.delete_relationship_by_model(carro['modelo'])
                     carroDAO.delete(carro)
-                    
 
                     print('O modelo', modelo, 'foi removido')
 
@@ -226,8 +226,9 @@ def view(connection):
                         'Não há nenhum piloto cadastrado no sistema, cancelando operação')
             elif aux == 'R':
                 results = motoristaDAO.read_all_relationship()
-                if len(results) > 0:              
-                    print('Estas são todas as relações entre os pilotos e os carros cadastrados até agora:')
+                if len(results) > 0:
+                    print(
+                        'Estas são todas as relações entre os pilotos e os carros cadastrados até agora:')
                     for record in results:
                         pp(record)
                         for carro in results[record]:
@@ -239,7 +240,8 @@ def view(connection):
 
                     print('A relação foi removida do sistema')
                 else:
-                    print('Nenhuma relação entre pilotos e carros foi cadastrada até o momento')
+                    print(
+                        'Nenhuma relação entre pilotos e carros foi cadastrada até o momento')
             else:
                 print('Não foi selecionada uma opção válida, cancelando operação')
             divider()
@@ -249,7 +251,7 @@ def view(connection):
 
             motoristas = motoristaDAO.read_all()
             carros = carroDAO.read_all()
-            if len(motoristas) > 0  and len(carros) > 0:
+            if len(motoristas) > 0 and len(carros) > 0:
                 print('Esses são os motoristas cadastrados:')
                 data = []
                 for record in motoristas:
@@ -267,7 +269,7 @@ def view(connection):
                 for record in motoristas:
                     if record['m']._properties['nome'] == piloto2:
                         piloto2 = record['m']._properties
-                
+
                 carros_1 = motoristaDAO.read_owernship(piloto1['nome'])
                 if(len(carros_1) > 0):
                     print('Esses são os carros cadastrados do piloto n° 1 :')
@@ -309,7 +311,8 @@ def view(connection):
                 pb1 = probabilidadeDeVencer(piloto1, carro1)
                 pb2 = probabilidadeDeVencer(piloto2, carro2)
 
-                print('\n\nA corrida foi bem disputada, mas por habilidade (ou calvicie)')
+                print(
+                    '\n\nA corrida foi bem disputada, mas por habilidade (ou calvicie)')
                 if(pb1 > pb2):
                     print('O piloto', piloto1['nome'], 'venceu!')
                 elif (pb2 > pb1):
@@ -324,4 +327,3 @@ def view(connection):
             divider()
         else:
             break
-   
